@@ -15,7 +15,7 @@ void leFicheiro(const char* path) {
   while(file.available()) {
     Serial.write(file.read());
   }
-  Serial.println("\n----------------------");
+  Serial.println("\n--------------------------");
   file.close();
 }
 

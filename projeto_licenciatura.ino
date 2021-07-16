@@ -86,6 +86,5 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);
   leValorSensor(tipoSensor, medeTemperatura, medeHumidade, pinSensor);
 }

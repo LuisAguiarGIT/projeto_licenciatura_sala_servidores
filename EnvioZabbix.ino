@@ -1,7 +1,7 @@
-void enviaDadosSensor(char* nomeItem, float valorSensor) {
+void enviaDadosSensor(const char* nomeItem, float valorSensor) {
   zSender.ClearItem();
   zSender.AddItem(nomeItem, valorSensor);
-  zSender.Send() == EXIT_SUCCESS ? Serial.println("Item inviado") : logErro("Erro no envio ao Zabbix!");
+  zSender.Send() == EXIT_SUCCESS ? Serial.println("Item enviado") : Serial.println("Erro no envio dos dados");
 }
 
 bool configuraZabbix() {

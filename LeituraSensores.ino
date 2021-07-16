@@ -53,7 +53,7 @@ void leValorSensor(const char* tipoDeSensor, boolean medeTemperatura, boolean me
       humidade    = dht.readHumidity();
 
       Serial.println(temperatura);
-      Serial.println(humidade);
+      //Serial.println(humidade);
       enviaDadosSensor(itemZabbix, temperatura);
     } else if (medeTemperatura) {
       temperatura = dht.readTemperature();

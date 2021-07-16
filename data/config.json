@@ -13,7 +13,7 @@
     "_definicoesDeSensores":"As próximas variáveis correspondem à configuração dos sensores que irão ser utilizados",
     "sensor1": {
         "tipoSensor": "DHT11",
-        "itemZabbix": "bastidor1",
+        "itemZabbix": "temp",
         "pinSensor": 2,
         "medeTemperatura": true,
         "medeHumidade": true,
