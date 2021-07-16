@@ -17,7 +17,7 @@
         "pinSensor": 2,
         "medeTemperatura": true,
         "medeHumidade": true,
-        "intervaloMedicao": 6000
+        "intervaloMedicao": 10000
     },
     "sensor2": {
         "tipoSensor": "DHT11",
