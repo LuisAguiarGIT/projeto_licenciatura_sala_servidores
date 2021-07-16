@@ -1,0 +1,73 @@
+{
+    "_definicoesDeRede": "Em seguida encontram-se as configurações necessárias para a conexão à rede",
+    "wifi": {
+        "ssid":"NOS-FABC",
+        "passwordRede":"SHGMNEMW"
+    },
+    "_definicoesDeZabbix":"Estas configurações referem-se à comunicação com o Zabbix",
+    "zabbix": {
+        "ipZabbix":"192.168.1.7",
+        "portaZabbix":10051,
+        "hostZabbix":"EspMon"
+    },
+    "_definicoesDeSensores":"As próximas variáveis correspondem à configuração dos sensores que irão ser utilizados",
+    "sensor1": {
+        "tipoSensor": "DHT11",
+        "itemZabbix": "bastidor1",
+        "pinSensor": 2,
+        "medeTemperatura": true,
+        "medeHumidade": true,
+        "intervaloMedicao": 6000
+    },
+    "sensor2": {
+        "tipoSensor": "DHT11",
+        "itemZabbix": "bastidor2",
+        "pinSensor": 4,
+        "medeTemperatura": false,
+        "medeHumidade": true,
+        "intervaloMedicao": 6000
+    },
+    "sensor3": {
+        "tipoSensor": "Reed",
+        "itemZabbix": "portaBastidor",
+        "pinSensor": 4,
+        "medeTemperatura": false,
+        "medeHumidade": true,
+        "intervaloMedicao": 6000
+    },
+    "sensor4": {
+        "tipoSensor": "null",
+        "pinSensor": 0,
+        "medeTemperatura": false,
+        "medeHumidade": false,
+        "intervaloMedicao": 0
+    },
+    "sensor5": {
+        "tipoSensor": "null",
+        "pinSensor": 0,
+        "medeTemperatura": false,
+        "medeHumidade": false,
+        "intervaloMedicao": 0
+    },
+    "sensor6": {
+        "tipoSensor": "null",
+        "pinSensor": 0,
+        "medeTemperatura": false,
+        "medeHumidade": false,
+        "intervaloMedicao": 0
+    },
+    "sensor7": {
+        "tipoSensor": "null",
+        "pinSensor": 0,
+        "medeTemperatura": false,
+        "medeHumidade": false,
+        "intervaloMedicao": 0
+    },
+    "sensor8": {
+        "tipoSensor": "null",
+        "pinSensor": 0,
+        "medeTemperatura": false,
+        "medeHumidade": false,
+        "intervaloMedicao": 0
+    }
+}
