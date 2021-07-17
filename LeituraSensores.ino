@@ -5,7 +5,7 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
   String itemZabbixTemp = stringCopy + appendTemp;
   String itemZabbixHumi = stringCopy + appendHum;
 
-  if (tipoDeSensor = "DHT11") {
+  if (tipoDeSensor == "DHT11") {
     DHT.read11(pinSensor);
     if (medeTemperatura && medeHumidade) {
       float temperatura = DHT.temperature;
@@ -21,10 +21,8 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
       float humidade = DHT.humidity;
 
       enviaDadosSensor(itemZabbixHumi, temperatura);
-    } else {
-      Serial.println("Erro na configuração do sensor DHT11");
     }
-  } else if (tipoDeSensor = "DHT22") {
+  } else if (tipoDeSensor == "DHT22") {
     DHT.read22(pinSensor);
     if (medeTemperatura && medeHumidade) {
       float temperatura = DHT.temperature;
@@ -40,112 +38,18 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
       float humidade = DHT.humidity;
 
       enviaDadosSensor(itemZabbixHumi, temperatura);
-    } else {
-      Serial.println("Erro na configuração do sensor DHT11");
     }
-  } else if (tipoDeSensor = "Reed") {
+  } else if (tipoDeSensor == "Reed") {
+    pinMode(pinSensor, INPUT);
+
+    int analogVal = analogRead(pinSensor);
+
+    enviaDadosSensor(itemZabbix, analogVal);
+  } else {
+    if (tipoDeSensor == "null") {
+      return;
+    }
+    logErro("Este tipo de sensor foi mal configurado ou não é suportado");
     return;
   }
-
 }
-
-//void verificaIntervalo(long currentMillis, long intervaloMedicao, const char* tipoDeSensor, boolean medeTemperatura, boolean medeHumidade, uint8_t pinSensor, const char* itemZabbix) {
-//  if (currentMillis - previousMillis > intervaloMedicao) {
-//    previousMillis = currentMillis;
-//    if (isConnected) {
-//      enviaDados(tipoDeSensor, medeTemperatura, medeHumidade, pinSensor, itemZabbix);
-//    } else {
-//      setup();
-//    }
-//  }
-//}
-
-//void enviaDados(const char* tipoDeSensor, boolean medeTemperatura, boolean medeHumidade, uint8_t pinSensor, const char* itemZabbix) {
-//  float temperatura       = 0;
-//  float humidade          = 0;
-//  const char* appendTemp  = "temp";
-//  const char* appendHum   = "humi";
-//  //const char* itemZabbixCopy = itemZabbix;
-//  char buf[30] = {0};
-//  
-//  if (tipoDeSensor = "DHT11") {
-//    DHT dht(pinSensor, DHTTYPE11);
-//    dht.begin();
-//
-//    if (medeTemperatura && medeHumidade) {
-//      temperatura = dht.readTemperature();
-//      humidade    = dht.readHumidity();
-//
-////      Serial.println(itemZabbixCopy);
-////      strcpy(buf, itemZabbixCopy);
-////      strcat(buf, appendTemp);
-//      
-//      enviaDadosSensor(itemZabbix, temperatura);
-//
-////      strcpy(buf, itemZabbixCopy);
-////      strcat(buf, appendHum);
-////      
-////      enviaDadosSensor(buf, humidade);
-//    } else if (medeTemperatura && !medeHumidade) {
-//      temperatura = dht.readTemperature();
-//
-//      //strcpy(buf, itemZabbixCopy);
-//      //strcat(buf, appendTemp);
-//      
-//      enviaDadosSensor(buf, temperatura);
-//    } else if (medeHumidade && !medeTemperatura) {
-//      humidade = dht.readHumidity();
-//      
-//      //strcpy(buf, itemZabbixCopy);
-//      //strcat(buf, appendHum);
-//      
-//      enviaDadosSensor(buf, humidade);
-//    } else {
-//      Serial.print("Erro na configuração do sensor DHT11 no pino:");
-//      Serial.println(pinSensor);
-//    }
-//  }
-//
-//  else if (tipoDeSensor = "DHT22") {
-//    DHT dht(pinSensor, DHTTYPE22);
-//    dht.begin();
-//
-//    if (medeTemperatura && medeHumidade) {
-//      temperatura = dht.readTemperature();
-//      humidade    = dht.readHumidity();
-//      
-//      //strcpy(buf, itemZabbixCopy);
-//      //strcat(buf, appendTemp);
-//      
-//      enviaDadosSensor(buf, temperatura);
-//   
-//      //strcpy(buf, itemZabbixCopy);
-//      //strcat(buf, appendHum);
-//      
-//      enviaDadosSensor(buf, humidade);
-//    } else if (medeTemperatura && !medeHumidade) {
-//      temperatura = dht.readTemperature();
-//
-//      //strcpy(buf, itemZabbixCopy);
-//      //strcat(buf, appendTemp);
-//      
-//      //enviaDadosSensor(buf, temperatura);
-//    } else if (medeHumidade && !medeTemperatura) {
-//      humidade = dht.readHumidity();
-//    
-//     // strcpy(buf, itemZabbixCopy);
-//     // strcat(buf, appendHum);
-//      
-//     // enviaDadosSensor(buf, humidade);
-//    } else {
-//      Serial.print("Erro na configuração do sensor DHT22 no pino:");
-//      Serial.println(pinSensor);
-//    }
-//  } else {
-//    Serial.println("Sensor introduzido não é possível avaliar");
-//  }
-
-//  if (tipoDeSensor == "Reed") {
-//    // TODO
-//  }
-//}
