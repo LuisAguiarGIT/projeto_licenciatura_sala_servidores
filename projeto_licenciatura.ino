@@ -1,7 +1,7 @@
 #include <ESP8266ZabbixSender.h>
 #include <ESP8266WiFi.h>
-#include <dht.h>
-//#include <DHT.h>
+//#include <dht.h>
+#include <DHT.h>
 #include <WiFiManager.h>
 #include <ArduinoJson.h>
 #include "LittleFS.h"
@@ -10,6 +10,7 @@
 #define INTERVALO 1000
 #define DHTTYPE11 DHT11
 #define DHTTYPE22 DHT22
+#define DEFAULTPIN 0
 ESP8266ZabbixSender zSender;
 
 //Rede wifi
@@ -85,13 +86,10 @@ int portaZabbix                 = 0;
 const char* hostZabbix          = "hostDeExemplo";
 
 //Variáveis
-long previousMillis = 0;
+long previousMillis   = 0;
 long intervaloMedicao = 60000;
 boolean isConnected;
-boolean loadedConfig = false;
-float temperatura = 0;
-
-dht DHT;
+boolean loadedConfig  = false;
 
 void setup() {
   Serial.begin(9600);
@@ -115,11 +113,6 @@ void setup() {
   }
 
   WiFi.begin(ssid, passwordRede);
-//  while (WiFi.status() != WL_CONNECTED) {
-//    delay(500);
-//    Serial.print(".");
-//  }
-//  isConnected = true;
   Serial.println("IP atribuido:");
   Serial.println(WiFi.localIP());
   

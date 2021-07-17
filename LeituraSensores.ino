@@ -6,38 +6,41 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
   String itemZabbixHumi = stringCopy + appendHum;
 
   if (tipoDeSensor == "DHT11") {
-    DHT.read11(pinSensor);
+    DHT dht = DHT(pinSensor,DHTTYPE11);
+    dht.begin();
+    
     if (medeTemperatura && medeHumidade) {
-      float temperatura = DHT.temperature;
-      float humidade = DHT.humidity;
+      float temperatura = dht.readTemperature();
+      float humidade = dht.readHumidity();
 
       enviaDadosSensor(itemZabbixTemp, temperatura);
       enviaDadosSensor(itemZabbixHumi, humidade);
     } else if (medeTemperatura && !medeHumidade) {
-      float temperatura = DHT.temperature;
+      float temperatura = dht.readTemperature();
 
       enviaDadosSensor(itemZabbixTemp, temperatura);
     } else if (medeHumidade && !medeTemperatura) {
-      float humidade = DHT.humidity;
+      float humidade = dht.readHumidity();
 
-      enviaDadosSensor(itemZabbixHumi, temperatura);
+      enviaDadosSensor(itemZabbixHumi, humidade);
     }
   } else if (tipoDeSensor == "DHT22") {
-    DHT.read22(pinSensor);
+    DHT dht = DHT(pinSensor,DHTTYPE22);
+    dht.begin();
     if (medeTemperatura && medeHumidade) {
-      float temperatura = DHT.temperature;
-      float humidade = DHT.humidity;
+      float temperatura = dht.readTemperature();
+      float humidade = dht.readHumidity();
 
       enviaDadosSensor(itemZabbixTemp, temperatura);
       enviaDadosSensor(itemZabbixHumi, humidade);
     } else if (medeTemperatura && !medeHumidade) {
-      float temperatura = DHT.temperature;
+      float temperatura = dht.readTemperature();
 
       enviaDadosSensor(itemZabbixTemp, temperatura);
     } else if (medeHumidade && !medeTemperatura) {
-      float humidade = DHT.humidity;
+      float humidade = dht.readHumidity();
 
-      enviaDadosSensor(itemZabbixHumi, temperatura);
+      enviaDadosSensor(itemZabbixHumi, humidade);
     }
   } else if (tipoDeSensor == "Reed") {
     pinMode(pinSensor, INPUT);
