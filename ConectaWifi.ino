@@ -15,6 +15,6 @@ boolean conectaWifi() {
     conta++;
   }
   Serial.println("Timeout!");
-  logErro("Erro na conexão Wifi");
+  logErro("Erro na conexão Wifi - Timeout!");
   return false;
 }

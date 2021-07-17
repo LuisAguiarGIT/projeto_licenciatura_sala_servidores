@@ -1,6 +1,5 @@
 #include <ESP8266ZabbixSender.h>
 #include <ESP8266WiFi.h>
-//#include <dht.h>
 #include <DHT.h>
 #include <WiFiManager.h>
 #include <ArduinoJson.h>
@@ -14,82 +13,84 @@
 ESP8266ZabbixSender zSender;
 
 //Rede wifi
-const char* ssid                = "aSuaRede";
-const char* passwordRede        = "aSuaPasse";
+const char* ssid                  = "aSuaRede";
+const char* passwordRede          = "aSuaPasse";
 
 //Ficheiros
-const char* ficheiroConfig      = "/config.json";
-const char* ficheiroDados       = "/DadosMedicao.txt";
-const char* ficheiroLoggerErros = "/LoggerErros.txt";
+const char* ficheiroConfig        = "/config.json";
+const char* ficheiroDados         = "/DadosMedicao.txt";
+const char* ficheiroLoggerErros   = "/LoggerErros.txt";
 
 //Sensores
   //Sensor 1
-String tipoSensor1          = "tipoDeExemplo";
-String itemZabbix1          = "umItemZabbix";
-uint8_t pinSensor1               = 0;
-boolean medeTemperatura1         = false;
-boolean medeHumidade1            = false;
-long intervaloMedicao1           = 0;
+String tipoSensor1                = "tipoDeExemplo";
+String itemZabbix1                = "umItemZabbix";
+uint8_t pinSensor1                = 0;
+boolean medeTemperatura1          = false;
+boolean medeHumidade1             = false;
+long intervaloMedicao1            = 0;
    //Sensor 2
-String tipoSensor2          = "tipoDeExemplo";
-String itemZabbix2          = "umItemZabbix";
-uint8_t pinSensor2               = 0;
-boolean medeTemperatura2         = false;
-boolean medeHumidade2            = false;
-long intervaloMedicao2           = 0;
+String tipoSensor2                = "tipoDeExemplo";
+String itemZabbix2                = "umItemZabbix";
+uint8_t pinSensor2                = 0;
+boolean medeTemperatura2          = false;
+boolean medeHumidade2             = false;
+long intervaloMedicao2            = 0;
   //Sensor 3
-String tipoSensor3          = "tipoDeExemplo";
-String itemZabbix3          = "umItemZabbix";
-uint8_t pinSensor3               = 0;
-boolean medeTemperatura3         = false;
-boolean medeHumidade3            = false;
-long intervaloMedicao3           = 0;
+String tipoSensor3                = "tipoDeExemplo";
+String itemZabbix3                = "umItemZabbix";
+uint8_t pinSensor3                = 0;
+boolean medeTemperatura3          = false;
+boolean medeHumidade3             = false;
+long intervaloMedicao3            = 0;
   //Sensor 4
-String tipoSensor4          = "tipoDeExemplo";
-String itemZabbix4          = "umItemZabbix";
-uint8_t pinSensor4               = 0;
-boolean medeTemperatura4         = false;
-boolean medeHumidade4            = false;
-long intervaloMedicao4           = 0;
+String tipoSensor4                = "tipoDeExemplo";
+String itemZabbix4                = "umItemZabbix";
+uint8_t pinSensor4                = 0;
+boolean medeTemperatura4          = false;
+boolean medeHumidade4             = false;
+long intervaloMedicao4            = 0;
   //Sensor 5
-String tipoSensor5          = "tipoDeExemplo";
-String itemZabbix5          = "umItemZabbix";
-uint8_t pinSensor5               = 0;
-boolean medeTemperatura5         = false;
-boolean medeHumidade5            = false;
-long intervaloMedicao5           = 0;
+String tipoSensor5                = "tipoDeExemplo";
+String itemZabbix5                = "umItemZabbix";
+uint8_t pinSensor5                = 0;
+boolean medeTemperatura5          = false;
+boolean medeHumidade5             = false;
+long intervaloMedicao5            = 0;
   //Sensor 6
-String tipoSensor6          = "tipoDeExemplo";
-String itemZabbix6          = "umItemZabbix";
-uint8_t pinSensor6               = 0;
-boolean medeTemperatura6         = false;
-boolean medeHumidade6            = false;
-long intervaloMedicao6           = 0;
+String tipoSensor6                = "tipoDeExemplo";
+String itemZabbix6                = "umItemZabbix";
+uint8_t pinSensor6                = 0;
+boolean medeTemperatura6          = false;
+boolean medeHumidade6             = false;
+long intervaloMedicao6            = 0;
   //Sensor 7
-String tipoSensor7          = "tipoDeExemplo";
-String itemZabbix7          = "umItemZabbix";
-uint8_t pinSensor7               = 0;
-boolean medeTemperatura7         = false;
-boolean medeHumidade7            = false;
-long intervaloMedicao7           = 0;
+String tipoSensor7                = "tipoDeExemplo";
+String itemZabbix7                = "umItemZabbix";
+uint8_t pinSensor7                = 0;
+boolean medeTemperatura7          = false;
+boolean medeHumidade7             = false;
+long intervaloMedicao7            = 0;
   //Sensor 8
-String tipoSensor8          = "tipoDeExemplo";
-String itemZabbix8          = "umItemZabbix";
-uint8_t pinSensor8               = 0;
-boolean medeTemperatura8         = false;
-boolean medeHumidade8            = false;
-long intervaloMedicao8           = 0;
+String tipoSensor8                = "tipoDeExemplo";
+String itemZabbix8                = "umItemZabbix";
+uint8_t pinSensor8                = 0;
+boolean medeTemperatura8          = false;
+boolean medeHumidade8             = false;
+long intervaloMedicao8            = 0;
 
 // Zabbix
 IPAddress ipZabbix;
-int portaZabbix                 = 0;
-const char* hostZabbix          = "hostDeExemplo";
+int portaZabbix                   = 0;
+const char* hostZabbix            = "hostDeExemplo";
 
 //Variáveis
-long previousMillis   = 0;
-long intervaloMedicao = 60000;
+long previousMillis               = 0;
+long intervaloMedicao             = 60000;
+float temperatura                 = 0;
+float humidade                    = 0;
 boolean isConnected;
-boolean loadedConfig  = false;
+boolean loadedConfig              = false;
 
 void setup() {
   Serial.begin(9600);
@@ -113,8 +114,6 @@ void setup() {
   }
 
   WiFi.begin(ssid, passwordRede);
-  Serial.println("IP atribuido:");
-  Serial.println(WiFi.localIP());
   
   leFicheiro(ficheiroDados);
   leFicheiro(ficheiroLoggerErros);
@@ -136,6 +135,22 @@ void loop() {
       enviaDados(tipoSensor7, itemZabbix7, medeTemperatura7, medeHumidade7, pinSensor7);
       enviaDados(tipoSensor8, itemZabbix8, medeTemperatura8, medeHumidade8, pinSensor8);
     } else {
+      leituraDeDados(tipoSensor1, pinSensor1);
+      escreveDadosFicheiro(tipoSensor1, pinSensor1);
+      leituraDeDados(tipoSensor2, pinSensor2);
+      escreveDadosFicheiro(tipoSensor2, pinSensor2);
+      leituraDeDados(tipoSensor3, pinSensor3);
+      escreveDadosFicheiro(tipoSensor3, pinSensor3);
+      leituraDeDados(tipoSensor4, pinSensor4);
+      escreveDadosFicheiro(tipoSensor4, pinSensor4);
+      leituraDeDados(tipoSensor5, pinSensor5);
+      escreveDadosFicheiro(tipoSensor5, pinSensor5);
+      leituraDeDados(tipoSensor6, pinSensor6);
+      escreveDadosFicheiro(tipoSensor6, pinSensor6);
+      leituraDeDados(tipoSensor7, pinSensor7);
+      escreveDadosFicheiro(tipoSensor7, pinSensor7);
+      leituraDeDados(tipoSensor8, pinSensor8);
+      escreveDadosFicheiro(tipoSensor8, pinSensor8);
       setup();
     }
   }

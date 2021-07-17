@@ -19,6 +19,35 @@ void leFicheiro(const char* path) {
   file.close();
 }
 
+void escreveDadosFicheiro(String tipoDeSensor, uint8_t pinSensor) {
+  if (tipoDeSensor == "null") {
+    return;
+  }
+
+  LittleFS.begin();
+  
+  const char* path = "/DadosMedicao.txt";
+  File ficheiroDeDados = LittleFS.open(path, "a");
+  if (ficheiroDeDados == NULL) {
+    printf("Erro na abertura do ficheiro %s", ficheiroDados);
+    return;
+  }
+  
+  ficheiroDeDados.print(tipoDeSensor);
+  ficheiroDeDados.print(" ");
+  ficheiroDeDados.print("Pin: ");
+  ficheiroDeDados.print(pinSensor);
+  ficheiroDeDados.print(" ");
+  ficheiroDeDados.print("T: ");
+  ficheiroDeDados.print(temperatura);
+  ficheiroDeDados.print(" ");
+  ficheiroDeDados.print("H: ");
+  ficheiroDeDados.println(humidade);
+
+  ficheiroDeDados.close();
+  LittleFS.end();
+}
+
 void logErro(char* mensagemDeErro) {
   const char* path = "/LoggerErros.txt";
   File ficheiroLoggerErros = LittleFS.open(path, "a");
