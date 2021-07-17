@@ -130,6 +130,8 @@ void loop() {
     previousMillis = currentMillis;
     if (isConnected) {
       enviaDados(tipoSensor1, itemZabbix1, medeTemperatura1, medeHumidade1, pinSensor1);
+      enviaDados(tipoSensor2, itemZabbix2, medeTemperatura2, medeHumidade2, pinSensor2);
+      enviaDados(tipoSensor3, itemZabbix3, medeTemperatura3, medeHumidade3, pinSensor3);
     } else {
       setup();
     }

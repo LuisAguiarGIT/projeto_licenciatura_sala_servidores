@@ -22,14 +22,14 @@
     "sensor2": {
         "tipoSensor": "DHT11",
         "itemZabbix": "bastidor2",
-        "pinSensor": 4,
+        "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": true,
         "intervaloMedicao": 6000
     },
     "sensor3": {
-        "tipoSensor": "Reed",
-        "itemZabbix": "portaBastidor",
+        "tipoSensor": "DHT22",
+        "itemZabbix": "algumaCoisa",
         "pinSensor": 4,
         "medeTemperatura": false,
         "medeHumidade": true,
@@ -37,6 +37,7 @@
     },
     "sensor4": {
         "tipoSensor": "null",
+        "itemZabbix": "null",
         "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": false,
@@ -44,6 +45,7 @@
     },
     "sensor5": {
         "tipoSensor": "null",
+        "itemZabbix": "null",
         "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": false,
@@ -51,6 +53,7 @@
     },
     "sensor6": {
         "tipoSensor": "null",
+        "itemZabbix": "null",
         "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": false,
@@ -58,6 +61,7 @@
     },
     "sensor7": {
         "tipoSensor": "null",
+        "itemZabbix": "null",
         "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": false,
@@ -65,6 +69,7 @@
     },
     "sensor8": {
         "tipoSensor": "null",
+        "itemZabbix": "null",
         "pinSensor": 0,
         "medeTemperatura": false,
         "medeHumidade": false,
