@@ -6,7 +6,7 @@
     },
     "_definicoesDeZabbix":"Estas configurações referem-se à comunicação com o Zabbix",
     "zabbix": {
-        "ipZabbix":"192.168.1.7",
+        "ipZabbix":"192.168.1.8",
         "portaZabbix":10051,
         "hostZabbix":"EspMon"
     },

@@ -9,7 +9,7 @@
 #define INTERVALO 1000
 #define DHTTYPE11 DHT11
 #define DHTTYPE22 DHT22
-#define DEFAULTPIN 0
+//#define DEFAULTPIN 0
 ESP8266ZabbixSender zSender;
 
 //Rede wifi
