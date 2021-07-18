@@ -4,7 +4,8 @@ void enviaDadosSensorDHT(String nomeItem, float valorSensor) {
   if (zSender.Send() == EXIT_SUCCESS) {
     Serial.println("Item enviado");
   } else {
-    logErro("Falta de resposta da plataforma Zabbix");
+    String mensagemErro = mensagemErroZabbix + nomeItem;
+    logErro(mensagemErro);
   }
 }
 
@@ -14,6 +15,7 @@ void enviaDadosSensorReed(String nomeItem, int valorSensor) {
   if (zSender.Send() == EXIT_SUCCESS) {
     Serial.println("Item enviado");
   } else {
-    logErro("Falta de resposta da plataforma Zabbix");
+    String mensagemErro = mensagemErroZabbix + nomeItem;
+    logErro(mensagemErro);
   }
 }

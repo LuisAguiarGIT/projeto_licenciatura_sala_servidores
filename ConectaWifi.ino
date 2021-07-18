@@ -8,6 +8,7 @@ boolean conectaWifi() {
       Serial.print("Endereço atribuido: ");
       Serial.println(WiFi.localIP());
       Serial.println();
+      intervaloMedicao = 60000;
       return true;
     }
     delay(INTERVALO/2);
@@ -15,6 +16,7 @@ boolean conectaWifi() {
     conta++;
   }
   Serial.println("Timeout!");
+  intervaloMedicao = 300000;
   logErro("Erro na conexão Wifi - Timeout!");
   return false;
 }

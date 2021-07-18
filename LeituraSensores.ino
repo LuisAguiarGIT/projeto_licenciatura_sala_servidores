@@ -22,6 +22,7 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
       enviaDadosSensorDHT(itemZabbixHumi, humidade);
       
     } else {
+      String mensagemErro = mensagemErroSensor + pinSensor;
       logErro("Sensor DHT11 mal configurado");
     }
   } else if (tipoDeSensor == "DHT22") {
@@ -41,6 +42,7 @@ void enviaDados(String tipoDeSensor, String itemZabbix, boolean medeTemperatura,
       enviaDadosSensorDHT(itemZabbixHumi, humidade);
       
     } else {
+      String mensagemErro = mensagemErroSensor + pinSensor;
       logErro("Sensor DHT11 mal configurado");
     }
   } else if (tipoDeSensor == "Reed") {
@@ -64,8 +66,7 @@ void leituraDeDados(String tipoDeSensor, uint8_t pinSensor){
     dht.begin();
     
     temperatura = dht.readTemperature();
-    humidade    = dht.readHumidity();
-    Serial.println(temperatura);    
+    humidade    = dht.readHumidity();   
   } else if (tipoDeSensor == "DHT22") {
     DHT dht = DHT(pinSensor,DHTTYPE22);
     dht.begin();

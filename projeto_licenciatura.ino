@@ -9,8 +9,11 @@
 #define INTERVALO 1000
 #define DHTTYPE11 DHT11
 #define DHTTYPE22 DHT22
-//#define DEFAULTPIN 0
 ESP8266ZabbixSender zSender;
+
+//Mensagens de erro
+String mensagemErroZabbix = "Falta de resposta da plataforma Zabbix, nome do item: ";
+String mensagemErroSensor = "Sensor mal configurado no pino: ";
 
 //Rede wifi
 const char* ssid                  = "aSuaRede";

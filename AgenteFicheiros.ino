@@ -48,7 +48,7 @@ void escreveDadosFicheiro(String tipoDeSensor, uint8_t pinSensor) {
   LittleFS.end();
 }
 
-void logErro(char* mensagemDeErro) {
+void logErro(String mensagemDeErro) {
   LittleFS.begin();
   const char* path = "/LoggerErros.txt";
   File ficheiroLoggerErros = LittleFS.open(path, "a");
@@ -88,10 +88,10 @@ boolean loadConfig() {
   }
 
   //Plataforma Zabbix
-  String ipString = (const char*)doc["zabbix"]["ipZabbix"];
+  String ipString   = (const char*)doc["zabbix"]["ipZabbix"];
   ipZabbix.fromString(ipString.c_str());
-  portaZabbix = (int)doc["zabbix"]["portaZabbix"];
-  hostZabbix = (const char*)doc["zabbix"]["hostZabbix"];
+  portaZabbix       = (int)doc["zabbix"]["portaZabbix"];
+  hostZabbix        = (const char*)doc["zabbix"]["hostZabbix"];
   //Rede
   ssid              = doc["wifi"]["ssid"];
   passwordRede      = doc["wifi"]["passwordRede"];
